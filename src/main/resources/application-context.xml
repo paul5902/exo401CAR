@@ -10,9 +10,18 @@
 
 
 	<bean id="md5" class="fr.eservices.drive.util.MD5Checker"></bean>
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"></bean>
-	<bean id="app" class="">
-		<property name="" ref=""/>
+	
+	<bean id="jdbcConnection" class="java.sql.DriverManager"
+		factory-method="getConnection" >
+		<constructor-arg value="jdbc:h2:./db"/>
+	</bean>
+	
+	<bean id="userDAO" class="fr.eservices.drive.dao.impl.UserJDBCDao" destroy-method="closeConnection">
+		<property name="pwdCheck" ref="md5"></property>
+		<property name="conn" ref="jdbcConnection"></property>
+	</bean>
+	<bean id="app" class="fr.eservices.drive.app.ChangePwdApp">
+		<property name="userDao" ref="userDAO"/>
 	</bean>
 
 </beans>

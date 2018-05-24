@@ -93,5 +93,9 @@ public class UserJDBCDao extends UserDao {
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
+	
+	public void closeConnection() throws SQLException {
+		conn.close();
+	}
 
 }
