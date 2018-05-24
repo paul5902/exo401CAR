@@ -8,7 +8,10 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="" class="">
+
+	<bean id="md5" class="fr.eservices.drive.util.MD5Checker"></bean>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"></bean>
+	<bean id="app" class="">
 		<property name="" ref=""/>
 	</bean>
 
